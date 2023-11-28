@@ -1,0 +1,77 @@
+<!-- Site que marca oevento do Fortnite OG em contagem regressiva-->
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fortnite Evento BIGBANG</title>
+
+<style>
+    @font-face {
+        font-family: 'fort' ;
+        src: url('fonts/fortnite.otf');          /* FORMATOS OTF(opentype), TFF('truetype') */
+    }
+
+    body{
+        background-image: url(images/bigbang.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-color: blueviolet;
+    }
+
+    #as {
+        text-align:center ;
+        font-family: 'fort', 'Times New Roman';
+        color: aliceblue;
+        font-size: 38px;
+    }
+
+    #countdown {
+        color: white;
+        font-family: 'fort';
+        font-size: 35px;
+        text-align: center;
+    }
+
+</style>
+
+</head>
+<body>
+    <h1 id="as">CONTAGEM REGRESSIVA EVENTO FORTNITE BIG BANG</h1>
+
+    <div id="countdown"></div>
+
+
+    <script>
+        // Data alvo para o contador regressivo (02/12/2023 às 16:00)
+        const targetDate = new Date('December 2, 2023 16:00:00').getTime();
+      
+        // Atualiza o contador a cada segundo
+        const interval = setInterval(function() {
+          // Data e hora atual
+          const now = new Date().getTime();
+      
+          // Calcula a diferença entre a data alvo e a data atual
+          const difference = targetDate - now;
+      
+          // Calcula dias, horas, minutos e segundos
+          const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+          const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+      
+          // Exibe o contador regressivo
+          document.getElementById('countdown').innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+      
+          // Verifica se a data alvo foi alcançada
+          if (difference < 0) {
+            clearInterval(interval);
+            document.getElementById('countdown').innerHTML = 'Contagem regressiva encerrada!';
+          }
+        }, 1000);
+      </script>
+
+</body>
+</html>
